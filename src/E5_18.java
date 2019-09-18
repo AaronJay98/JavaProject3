@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 public class E5_18 {
 
     public static void main(String[] args) {
-	    double dblUserIncome = 0;                                   //Will hold the users income as he/she inputs it
+	    double dblUserIncome;                                       //Will hold the users income as he/she inputs it
 	    double dblUserIncomeTax = 0;                                //Will hold the users income tax after calculating what his tax percentage is
         String strDecimalFormat = "##0.00";                         //This will put the users income tax into the correct format (may be adjusted starting at line 39-42)
         Scanner sUserInput = new Scanner(System.in);                //This will get the users input
@@ -20,7 +20,6 @@ public class E5_18 {
         }
 
         //Formulates the income tax of user based on their income
-        double dblTempUserIncome = dblUserIncome;                         //Temp variable for calculations
         if (dblUserIncome <= 50000)
             dblUserIncomeTax = dblUserIncome * .01;
         else if (dblUserIncome > 50000 && dblUserIncome <= 75000) {
@@ -56,7 +55,7 @@ public class E5_18 {
         else
             System.out.println("Error has occurred");
 
-        dblTempUserIncome = dblUserIncome;                      //Temp variable for calculations in following while loop
+        double dblTempUserIncome = dblUserIncome;               //Temp variable for calculations in following while loop
         while((dblTempUserIncome / 1000) > 0) {                 //Checks if another comma is needed when outputting
             strDecimalFormat = "###," + strDecimalFormat;       //Creates the comma in the formatting and allows for 3 extra digits
             dblTempUserIncome = dblTempUserIncome /1000;        //Sets the temp variable to result from while condition to be reevaluated
