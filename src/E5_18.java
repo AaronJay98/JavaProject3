@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
@@ -21,22 +20,43 @@ public class E5_18 {
         }
 
         //Formulates the income tax of user based on their income
+        double dblTempUserIncome = dblUserIncome;                         //Temp variable for calculations
         if (dblUserIncome <= 50000)
             dblUserIncomeTax = dblUserIncome * .01;
-        else if (dblUserIncome > 50000 && dblUserIncome <= 75000)
-            dblUserIncomeTax = dblUserIncome * .02;
-        else if (dblUserIncome > 75000 && dblUserIncome <= 100000)
-            dblUserIncomeTax = dblUserIncome * .03;
-        else if (dblUserIncome > 100000 && dblUserIncome <= 250000)
-            dblUserIncomeTax = dblUserIncome * .04;
-        else if (dblUserIncome > 250000 && dblUserIncome <= 500000)
-            dblUserIncomeTax = dblUserIncome * .05;
-        else if (dblUserIncome > 500000)
-            dblUserIncomeTax = dblUserIncome * .06;
+        else if (dblUserIncome > 50000 && dblUserIncome <= 75000) {
+            dblUserIncomeTax = 50000 * .01;
+            dblUserIncomeTax += (dblUserIncome - 50000) * .02;
+        }
+        else if (dblUserIncome > 75000 && dblUserIncome <= 100000) {
+            dblUserIncomeTax =  50000 * .01;
+            dblUserIncomeTax += 25000 * .02;
+            dblUserIncomeTax += (dblUserIncome - 75000) * .03;
+        }
+        else if (dblUserIncome > 100000 && dblUserIncome <= 250000) {
+            dblUserIncomeTax =  50000 * .01;
+            dblUserIncomeTax += 25000 * .02;
+            dblUserIncomeTax += 25000 * .03;
+            dblUserIncomeTax += (dblUserIncome - 100000) * .04;
+        }
+        else if (dblUserIncome > 250000 && dblUserIncome <= 500000) {
+            dblUserIncomeTax =  50000 * .01;
+            dblUserIncomeTax += 25000 * .02;
+            dblUserIncomeTax += 25000 * .03;
+            dblUserIncomeTax += 150000 * .04;
+            dblUserIncomeTax += (dblUserIncome - 250000) * .05;
+        }
+        else if (dblUserIncome > 500000) {
+            dblUserIncomeTax = 50000 * .01;
+            dblUserIncomeTax += 25000 * .02;
+            dblUserIncomeTax += 25000 * .03;
+            dblUserIncomeTax += 150000 * .04;
+            dblUserIncomeTax += 250000 * .05;
+            dblUserIncomeTax += (dblUserIncome - 500000) * .06;
+        }
         else
             System.out.println("Error has occurred");
 
-        double dblTempUserIncome = dblUserIncome;               //Temp variable for calculations in following while loop
+        dblTempUserIncome = dblUserIncome;                      //Temp variable for calculations in following while loop
         while((dblTempUserIncome / 1000) > 0) {                 //Checks if another comma is needed when outputting
             strDecimalFormat = "###," + strDecimalFormat;       //Creates the comma in the formatting and allows for 3 extra digits
             dblTempUserIncome = dblTempUserIncome /1000;        //Sets the temp variable to result from while condition to be reevaluated
