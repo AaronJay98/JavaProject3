@@ -7,11 +7,14 @@ public class E5_18 {
     private String strDecimalFormat = "##0.00";                         //This will put the users income tax into the correct format (may be adjusted starting at line 39-42)
     private DecimalFormat dfIncomeTax;
 
-    public void E5_18(double inputIncome) {
+    public E5_18(double inputIncome) {
+        if(inputIncome < 0.0) {
+            inputIncome = 0.0;
+        }
         dblUserIncome = inputIncome;
     }
 
-    public String getTax() {
+    public String getIncomeTax() {
         if (dblUserIncome <= 50000)
             dblUserIncomeTax = dblUserIncome * .01;
         else if (dblUserIncome <= 75000) {
